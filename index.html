@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown Previewer</title>
+    <script src="./marked.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+      function updatePage() {
+        document.getElementById("preview").innerHTML = marked.parse(document.getElementById("editor").value);
+      };
+      
+      function defaultPage() {
+        const defaultText = `
+# This is a Markdown Previewer.
+## created by Caesars1
+[Here is a link to the last project](https://caesars1.github.io/random_quote_generator_with_bootstrap/)
+
+<dl>
+  <dt>The title</dt>
+  <dd>Inline text</dd>
+
+  <dt>The title</dt>
+  <dd>Inline text</dd>
+</dl>
+
+\` This is an example of inline code. \`
+
+\`\`\`
+  function example() {
+    example of code;
+  }
+\`\`\`
+
+- This
+- an 
+- example 
+- of
+- lists
+
+> This a example of block code. 
+
+![Image](https://149401384.v2.pressablecdn.com/wp-content/uploads/2024/12/invisible-apple-cake-13-scaled.jpg)
+
+**This is an example of bold text.**
+        `;
+        document.getElementById("editor").value = defaultText;
+        document.getElementById("preview").innerHTML = marked.parse(defaultText);
+      }
+    </script>
+  </head>
+  <body onload="defaultPage()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center bg-primary">
+                <h1>Markdown Previewer</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 bg-dark">
+                <h2 class="text-center text-white">Editor</h2>
+                <div class="form-group">
+                  <textarea id="editor" onkeyup="updatePage()" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-6 bg-secondary">
+                <h2 class="text-center text-white">Previewer</h2>
+                <div id="preview"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
